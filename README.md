@@ -1,4 +1,4 @@
-![Screenshot_105](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/da28eb41-3a19-4af0-b5ca-a6b46e0718df)# Node_crash_course
+# Node_crash_course
 
 https://www.youtube.com/watch?v=2LUdnb-mls0&t=293s
 
