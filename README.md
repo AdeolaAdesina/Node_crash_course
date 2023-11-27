@@ -244,3 +244,49 @@ unlink('hello.txt', (err) => {
 
 
 
+## Importing and exporting modules.
+
+server.js:
+
+```
+const addNums = require("./addNums");
+
+const sum = addNums(2, 2)
+console.log(sum);
+```
+
+
+addNums.js:
+
+```
+function addNums(a, b) {
+    return a + b;
+}
+
+module.exports = addNums;
+```
+
+
+When you run it:
+
+![Screenshot_98](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/63ca18eb-30d6-408c-82a4-c8fb8f814f31)
+
+
+We can also use ES6 syntax.
+
+
+![Screenshot_99](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/44032b32-1290-41aa-bccf-59f0d018b9a2)
+
+![Screenshot_100](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/52adb35d-6853-40aa-a245-8870f64b133a)
+
+
+Go get our package json:
+
+```
+npm init -y
+```
+
+This gave us a package.json then we added a new line: type: module
+
+![Screenshot_101](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/1c0f7774-c727-40b0-8408-5ad79adc97b8)
+
