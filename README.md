@@ -704,3 +704,21 @@ default:
 
 Save and see that nodemon works.
 
+
+
+## Deploying to Heroku
+
+We need to first upload to github.
+
+![Screenshot_119](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/5403d2d0-124f-443a-b8e6-3cc364730102)
+
+Then we need to initialize directory.
+
+![Screenshot_120](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/064e5283-3d9e-4208-9af8-796282ea0638)
+
+Then make a commit.
+
+![Screenshot_121](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/b0de8ae7-0017-4ad0-8f0f-aaa9cab98781)
+
+Then we'll click the cloud icon below.
+
