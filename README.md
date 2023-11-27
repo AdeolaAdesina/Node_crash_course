@@ -1,5 +1,9 @@
 # Node_crash_course
 
+https://www.youtube.com/watch?v=2LUdnb-mls0&t=293s
+
+
+
 To check the version of node:
 
 ```
@@ -52,6 +56,136 @@ node server
 You just created your first webserver.
 
 Stop the process in the terminal with Control + C.
+
+
+## Global Properties 
+
+We have access to other things other than process in the global object.
+
+We also have:
+
+global.__filename
+global.__dirname
+
+
+![Screenshot_80](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/11f4fbe9-c591-497c-9f92-7685a215a64e)
+
+This will help when we need to read and write files on the server.
+
+
+## File System Module
+
+### Reading files
+
+Create an hi.txt file and put:
+
+```
+Hello World
+```
+
+Now we're going to read it.
+
+```
+const { log } = require('console');
+const fs = require('fs');
+
+fs.readFile("hi.txt", (err, data) => {
+    if (err) {
+        console.error(err)
+        return
+    }
+    console.log(data);
+});
+```
+
+
+![Screenshot_81](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/9f12820f-d497-4a60-83dc-267fdda28789)
+
+
+
+Notice that we're getting a data buffer not the actual text.
+
+
+To get the text, we can add data.tostring().
+
+
+![Screenshot_82](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/ac4a3f6e-6713-4d54-9279-1b6ff493af83)
+
+
+Or we specify the encoding type.
+
+
+![Screenshot_83](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/ae70cf8d-9ff1-44b4-868e-a38a905553ee)
+
+
+Now let's add a console log outside our function.
+
+
+![Screenshot_84](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/3a8def7c-8ff6-49d4-8b30-4927bf4d1642)
+
+
+Do you notice that we got "Log from outside" before hello world?
+
+This demonstrates the asynchronous nature of node. It takes node a split second to read the file, so it just process the second log first.
+
+Each node module also has a synchronous version.
+
+
+![Screenshot_85](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/102f1217-c173-4763-9b6a-f42692e6d0a6)
+
+
+Instead of importing the entire fs module, we can also do destructuring.
+
+
+![Screenshot_86](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/170ac47f-5389-4711-be13-7492d19450a3)
+
+
+
+### Writing to Files
+
+
+```
+const { log } = require('console');
+const { writeFile, writeFileSync } = require('fs');
+
+const newContent = 'This is some new text'
+
+writeFile('hi.txt', newContent, (err) => {
+    if (err) {
+        console.error(err);
+        return
+    }
+    console.log('Content Written');
+});
+```
+
+
+![Screenshot_87](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/91c463f6-3c09-4a79-957f-84b711e4eb87)
+
+
+
+![Screenshot_88](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/9c35aab6-0bec-4686-835f-57063973bf17)
+
+
+Notice that the content was entirely replaced.
+
+That's the default behaviour of writeFile.
+
+We can change this behaviour by adding a flag.
+
+
+![Screenshot_89](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/124cead1-ea9d-4a1c-a4bc-d92f36566f2d)
+
+
+
+![Screenshot_90](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/21ae41a6-4622-408c-bb4c-98c3fedec17e)
+
+
+We can also use the synchronous version.
+
+
+
+
 
 
 
