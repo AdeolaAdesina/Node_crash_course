@@ -373,4 +373,210 @@ server.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
 
 
 
+## Webserver HTML Files
+
+Now we want to send an HTML file and access that file.
+
+So we use fs to access it.
+
+```
+
+```
+
+
+index.html:
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 5rem;
+        background-color: darkslateblue;
+        color: white;
+      }
+    </style>
+    <title>Node.js Crash Course</title>
+  </head>
+  <body>
+    <h1>Home</h1>
+  </body>
+</html>
+```
+
+![Screenshot_109](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/2c53d381-3eef-4bd3-8678-2ea5857f7f57)
+
+![Screenshot_110](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/b72b0999-b850-46d5-80c8-4f6b74209785)
+
+
+
+## Web Server Basic Routing
+
+If we do http://localhost:3000/about 
+
+We'll still get the same file.
+
+Let's build a route to certain URL.
+
+Now if we add this code to our server and refresh the browser, you will get:
+
+![Screenshot_111](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/40607bdc-1fa8-4650-a59b-505607a47405)
+
+![Screenshot_112](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/cf13edfe-a287-428e-a5aa-79d482194a03)
+
+![Screenshot_114](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/2a6ffba1-b4d2-48b0-a0e1-7c79a3618a90)
+
+![Screenshot_113](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/9de063e7-4282-4eac-a471-b40bf2c509c5)
+
+
+We can now add this to the server code:
+
+```
+let path = './';
+    switch(req.url) {
+        case '/':
+            path += 'index.html';
+            break;
+        case '/about':
+            path += 'about.html';
+            break;
+        default:
+            path += '404.html';
+            break; 
+    }
+```
+
+
+server.js:
+
+```
+const http = require('http');
+const fs = require('fs');
+
+const PORT = process.env.PORT || 3000
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/html');
+
+    let path = './';
+    switch(req.url) {
+        case '/':
+            path += 'index.html';
+            break;
+        case '/about':
+            path += 'about.html';
+            break;
+        default:
+            path += '404.html';
+            break; 
+    }
+
+    fs.readFile(path, (err, data) => {
+        if (err) {
+            console.error(err);
+            res.end();
+        } else {
+            res.write(data); // or res.end(data);
+            res.end();
+        }
+    });
+})
+
+server.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
+```
+
+
+about.html:
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 5rem;
+        background-color: darkslateblue;
+        color: white;
+      }
+    </style>
+    <title>Node.js Crash Course</title>
+  </head>
+  <body>
+    <h1>About</h1>
+  </body>
+</html>
+```
+
+404.html:
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 5rem;
+        background-color: darkslateblue;
+        color: white;
+      }
+    </style>
+    <title>Node.js Crash Course</title>
+  </head>
+  <body>
+    <h1>404</h1>
+  </body>
+</html>
+```
+
+
+Now run the server with ```node server```
+
+
+
+
+
+
+
+
 
