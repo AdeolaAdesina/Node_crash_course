@@ -183,12 +183,64 @@ We can change this behaviour by adding a flag.
 
 We can also use the synchronous version.
 
+![Screenshot_91](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/34d60ccb-60c4-4de1-8678-07b30fa35b82)
+
+
+![Screenshot_92](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/c844995c-9dc1-4d48-9864-719b334f020c)
+
+Instead of using flag to append new text, we can use the appendFile option.
+
+
+![Screenshot_93](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/f10791cd-af64-4611-8925-e58897c1b1de)
+
+![Screenshot_94](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/b0e30990-ad0e-44bf-a99e-6a42fc18f239)
+
+
+
+### Renaming and Deleting Files
+
+
+```
+const { log } = require('console');
+const { rename } = require('fs');
+
+
+
+rename('hi.txt', 'hello.txt', (err) => {
+    if (err) {
+        console.error(err);
+        return
+    }
+    console.log('File Renamed');
+})
+```
+
+
+![Screenshot_95](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/aaa52d9b-66d0-4886-85f5-18739f833a81)
+
+![Screenshot_96](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/049c504f-0774-47f5-a45a-b6a6deaac325)
 
 
 
 
+Deleting
+
+```
+const { log } = require('console');
+const { unlink } = require('fs');
 
 
+
+unlink('hello.txt', (err) => {
+    if (err) {
+        console.error(err);
+        return
+    }
+    console.log('File Deleted');
+})
+```
+
+![Screenshot_97](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/91ec167d-07cf-421f-82ee-3964fb6202e4)
 
 
 
