@@ -574,9 +574,133 @@ Now run the server with ```node server```
 
 
 
+Then add the status codes:
+
+```
+const http = require('http');
+const fs = require('fs');
+
+const PORT = process.env.PORT || 3000
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/html');
+
+    let path = './';
+    switch(req.url) {
+        case '/':
+            path += 'index.html';
+            res.statusCode = 200;
+            break;
+        case '/about':
+            path += 'about.html';
+            res.statusCode = 200;
+            break;
+        default:
+            path += '404.html';
+            res.statusCode = 404;
+            break; 
+    }
+
+    fs.readFile(path, (err, data) => {
+        if (err) {
+            console.error(err);
+            res.end();
+        } else {
+            res.write(data); // or res.end(data);
+            res.end();
+        }
+    });
+})
+
+server.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
+```
 
 
 
+## Web Server Redirects
+
+We can redirect them back to homepage instead of 404.
+
+So the default will be:
+
+```
+default:
+            res.setHeader('Location', '/')
+            res.statusCode = 301;
+            break;
+```
+
+Now when you run the server, any random URl will take you back to the home page.
 
 
+
+## NPM - Node Package manager
+
+```
+npm init
+```
+
+This creates a package.json
+
+
+## Nodemon
+
+with Nodemon, we don't need to restart our server every time we make changes.
+
+```
+npm i -g nodemon
+```
+
+This will install nodemon globally on our computer.
+
+```
+npm i -D nodemon
+```
+
+This will install nodemon as a dev dependency on our project.
+
+Now look in your package.json.
+
+
+You will see your node_modules folder now.
+
+Now create a gitignore file to hide your node_modules file
+
+![Screenshot_117](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/1295f33c-03b5-4b74-9326-03f3abefefae)
+
+If we were to download this from github, we will get a node modules folder.
+
+So i can reinstall the dependencies with
+
+```
+npm i
+```
+
+Now we can edit the scripts in the package.json:
+
+```
+"dev": "nodemon server"
+"start": "node server"
+```
+
+Now we can start using nodemon with:
+
+```
+npm run dev
+```
+
+![Screenshot_118](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/3c928e58-dc65-4d16-a8c1-317b7dc8713a)
+
+
+Now let's change the default back to 404.
+
+```
+default:
+            path += '404.html';
+            res.statusCode = 404;
+            break;
+```
+
+Save and see that nodemon works.
 
