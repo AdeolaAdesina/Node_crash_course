@@ -722,3 +722,40 @@ Then make a commit.
 
 Then we'll click the cloud icon below.
 
+
+Then we'll go to heroku.
+
+
+Create a new app
+
+![Screenshot_122](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/a4d2cb77-a63e-40d7-b060-dcfc59be38a0)
+
+
+Create app
+
+![Screenshot_123](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/560ce7a6-0fd6-4a8d-ac20-a56ad0f0006e)
+
+
+Choose github
+
+![Screenshot_124](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/15c21413-b6ca-4770-81b6-54c5cf1111c2)
+
+
+Connect to github
+
+![Screenshot_125](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/3f2c190a-82ed-4738-98d7-600a397435b9)
+
+Connect to Github repo
+
+![Screenshot_126](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/d2b5be9b-b5b5-47fd-82f5-65116b97e12f)
+
+
+Enable automatic deploy
+
+![Screenshot_127](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/bf1e8ed3-3143-46c1-bb7c-d694dc187e8a)
+
+Deployed!!
+
+![Screenshot_128](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/11b57c77-cba2-49a1-9a32-dc9dd878ff93)
+
+
