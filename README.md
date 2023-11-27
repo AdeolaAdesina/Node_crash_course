@@ -1,4 +1,4 @@
-# Node_crash_course
+![Screenshot_105](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/da28eb41-3a19-4af0-b5ca-a6b46e0718df)# Node_crash_course
 
 https://www.youtube.com/watch?v=2LUdnb-mls0&t=293s
 
@@ -289,4 +289,88 @@ npm init -y
 This gave us a package.json then we added a new line: type: module
 
 ![Screenshot_101](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/1c0f7774-c727-40b0-8408-5ad79adc97b8)
+
+
+
+## Basic HTML Content 
+
+Now let's use the http module to create an actual webserver.
+
+```
+const http = require('http');
+
+http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain')
+    res.write('Hello World');
+    res.end();
+}).listen(3000, () => console.log('Server running'));
+```
+
+![Screenshot_102](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/e86a6a1c-5ea5-4408-a7eb-12419a285300)
+
+
+![Screenshot_103](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/f683c4cb-8b56-4ced-9863-512e313a4a57)
+
+
+![Screenshot_104](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/fa367ded-f8bb-47bc-9bc2-2796b20e6e3b)
+
+
+We can refactor the code:
+
+```
+const http = require('http');
+
+const PORT = process.env.PORT || 3000
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain')
+    res.write('Hello World');
+    res.write('Hello World again');
+    res.end("The end");
+})
+
+server.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
+
+```
+
+
+![Screenshot_105](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/52a1eb75-731e-4afb-9144-2f713ec40dda)
+
+![Screenshot_106](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/52a46943-1ba9-4043-b2c8-69d8dd162598)
+
+
+
+This doesn't look great.
+
+
+So let's look at sending some HTML.
+
+
+We just change our content type to text/html, then get rid of res.write.
+
+Then we have to restart our server.
+
+```
+const http = require('http');
+
+const PORT = process.env.PORT || 3000
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/html')
+    res.end("<h1>Hello World</h1>");
+})
+
+server.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
+```
+
+
+![Screenshot_107](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/5f5ddc04-959c-4f55-94ca-b5f3fc9dad52)
+
+![Screenshot_108](https://github.com/AdeolaAdesina/Node_crash_course/assets/29931071/5f2212ea-afef-460e-926f-c0fcf9669cd8)
+
+
+
 
